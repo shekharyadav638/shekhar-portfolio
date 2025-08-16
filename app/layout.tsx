@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
     "Professional portfolio of Shekhar Yadav, a Full-Stack Developer specializing in Next.js, React, and Node.js",
     generator: 'v0.dev',
     icons: {
-      icon: "/placeholder-user.jpg",
-      shortcut: "/placeholder-user.jpg",
-      apple: "/placeholder-user.jpg",
+      icon: "/avatar.jpg",
+      shortcut: "/avatar.jpg",
+      apple: "/avatar.jpg",
     }
 }
 
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

@@ -27,14 +27,14 @@ export function Hero() {
         transition={{ duration: 0.8 }}
         className="relative z-10 text-center space-y-6"
       >
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <div className="relative p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
             <Avatar className="h-24 w-24 border-2 border-zinc-900">
               <AvatarImage src="/placeholder-user.jpg" alt="Shekhar Yadav" />
               <AvatarFallback>SY</AvatarFallback>
             </Avatar>
           </div>
-        </div>
+        </div> */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
           Shekhar Yadav
         </h1>

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, Send } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 export function Contact() {
   const [ref, inView] = useInView({
@@ -22,18 +23,47 @@ export function Contact() {
     email: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(formData)
-    // Here you would typically send the data to your backend
-    alert("Thank you for your message! I'll get back to you soon.")
-    setFormData({ name: "", email: "", message: "" })
+    if (isSubmitting) return
+    setIsSubmitting(true)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}))
+        const message = (data as { error?: string }).error || "Failed to send message"
+        throw new Error(message)
+      }
+
+      toast({
+        title: "Message sent",
+        description: "I'll get back to you soon.",
+        className: "bg-green-600 text-white border-green-700",
+      })
+      setFormData({ name: "", email: "", message: "" })
+    } catch (error) {
+      toast({
+        title: "Failed to send",
+        description: "Please try again later.",
+        variant: "destructive",
+        className: "bg-red-600 text-white border-red-700",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -143,9 +173,9 @@ export function Contact() {
                   className="bg-zinc-900 border-zinc-700 focus:border-indigo-500 min-h-[120px]"
                 />
               </div>
-              <Button type="submit" className="w-full">
-                <Send className="mr-2 h-4 w-4" />
-                Send Message
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {!isSubmitting && <Send className="mr-2 h-4 w-4" />}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
