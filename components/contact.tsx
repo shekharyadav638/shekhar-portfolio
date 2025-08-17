@@ -9,7 +9,7 @@ import { SectionHeading } from "./section-heading"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, Send } from "lucide-react"
+import { Mail, Phone, Send } from "@/components/icons"
 import { useToast } from "@/hooks/use-toast"
 
 export function Contact() {
@@ -67,7 +67,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 pb-24">
       <SectionHeading title="Contact Me" subtitle="Let's connect and discuss potential opportunities" />
 
       <motion.div

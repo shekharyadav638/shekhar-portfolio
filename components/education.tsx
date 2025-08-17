@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "./section-heading"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { GraduationCap, School } from "lucide-react"
+import { GraduationCap, School } from "@/components/icons"
 
 const educationData = [
   {
@@ -27,7 +27,7 @@ const educationData = [
 
 export function Education() {
   return (
-    <section id="education" className="py-20">
+    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 pb-24">
       <SectionHeading title="Education" subtitle="My academic background and qualifications" />
 
       <div className="grid gap-8 md:grid-cols-2">

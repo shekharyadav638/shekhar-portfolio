@@ -6,32 +6,46 @@ import { SectionHeading } from "./section-heading"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github } from "@/components/icons"
 
 const projectsData = [
   {
-    title: "Codershouse",
+    title: "DrupalFit",
     description:
-      "A real-time voice communication platform where users can create or join rooms for voice communication. Features include OTP-based authentication and real-time voice chat.",
-    image: "/placeholder.svg?height=600&width=1200",
-    link: "#", // Update with real link
-    github: "#", // Update with real GitHub link
-    technologies: ["React JS", "Node JS", "Redux", "Express JS", "MongoDB", "APIs"],
+      "Website auditing platform that analyzes entire sites for performance across all URLs, flags accessibility issues, and surfaces SEO issues using Semrush. Includes 24/7 health monitoring and a team feature to share site data.",
+    image: "/projects/drupalfit.jpg",
+    link: "https://drupalfit.com/",
+    technologies: ["Next.js", "Node.js", "Chakra UI", "Serverless", "AWS" , "Stripe"],
   },
   {
-    title: "Moviesflix",
+    title: "AES – Interactive Map",
     description:
-      "A user-friendly interface showcasing a diverse collection of movies and shows. Employed React components for smooth UI rendering and integrated real-time data retrieval through TMDB API.",
-    image: "/placeholder.svg?height=600&width=1200",
-    link: "#", // Update with real link
-    github: "#", // Update with real GitHub link
-    technologies: ["React JS", "TMDB API", "CSS"],
+      "Built an interactive mapping experience using Leaflet with Mapbox tiles to visualize AES initiatives and locations.",
+    image: "/projects/aes.jpg",
+    link: "https://www.aes.com/",
+    technologies: ["React.js", "Leaflet", "Mapbox"],
+  },
+  {
+    title: "Washington DC 250",
+    description:
+      "Developed frontend components and UI patterns using Storybook integrated with a Drupal-powered site.",
+    image: "/projects/dc250.jpg",
+    link: "https://dc250.us/",
+    technologies: ["Drupal", "Storybook", "React.js"],
+  },
+  {
+    title: "Visit North Carolina – Search",
+    description:
+      "Implemented a personalized search experience leveraging Algolia for fast, relevant results.",
+    image: "/projects/visitnc.jpg",
+    link: "https://www.visitnc.com/",
+    technologies: ["Algolia", "React.js"],
   },
 ]
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 pb-24">
       <SectionHeading title="Projects" subtitle="Showcasing my technical skills and creativity" />
 
       <div className="grid gap-8 md:grid-cols-2">
@@ -63,6 +77,13 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
             src={project.image}
             alt={project.title}
             className="object-cover w-full transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            onError={(e) => {
+              const img = e.currentTarget as HTMLImageElement
+              if (img.src.indexOf('/placeholder.jpg') === -1) {
+                img.src = '/placeholder.jpg'
+              }
+            }}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
           />
@@ -91,12 +112,14 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
               Live Demo
             </a>
           </Button>
-          <Button variant="outline" asChild>
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-4 w-4" />
-              GitHub
-            </a>
-          </Button>
+          {project.github ? (
+            <Button variant="outline" asChild>
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                <Github className="mr-2 h-4 w-4" />
+                GitHub
+              </a>
+            </Button>
+          ) : null}
         </CardFooter>
       </Card>
     </motion.div>

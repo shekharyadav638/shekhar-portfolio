@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "./section-heading"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { FileCheck } from "lucide-react"
+import { FileCheck } from "@/components/icons"
 
 const certificationsData = [
   {
@@ -31,7 +31,7 @@ const certificationsData = [
 
 export function Certifications() {
   return (
-    <section id="certifications" className="py-20">
+    <section id="certifications" className="py-20 px-4 sm:px-6 lg:px-8 pb-24">
       <SectionHeading title="Certifications" subtitle="Professional development and continuous learning" />
 
       <div className="max-w-4xl mx-auto">

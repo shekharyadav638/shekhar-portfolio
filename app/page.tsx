@@ -11,7 +11,7 @@ import { Skills } from "@/components/skills"
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <div className="max-w-full mx-auto">
         <Hero />
         <About />
         <Experience />

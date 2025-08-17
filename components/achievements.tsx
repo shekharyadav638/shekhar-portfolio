@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "./section-heading"
-import { Award, Code } from "lucide-react"
+import { Award, Code } from "@/components/icons"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const achievementsData = [
@@ -31,7 +31,7 @@ const achievementsData = [
 
 export function Achievements() {
   return (
-    <section id="achievements" className="py-20">
+    <section id="achievements" className="py-20 px-4 sm:px-6 lg:px-8 pb-24">
       <SectionHeading title="Achievements" subtitle="Recognition of my skills and dedication" />
 
       <div className="grid gap-6 md:grid-cols-2">

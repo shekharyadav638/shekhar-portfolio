@@ -11,7 +11,7 @@ export function About() {
   })
 
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 pb-24">
       <SectionHeading title="About Me" subtitle="Get to know more about my background and skills" />
 
       <motion.div
